@@ -9,9 +9,9 @@ while true
     file_title = gets.chomp
     CSV.open("#{file_title}", "w") do |text|
     puts "内容を入力してください"
-    puts "完了したらCtrl + Dをおしてください"
-    memo_contents = gets.chomp
-    text << ["#{memo_contents}"]
+    puts "入力が完了したらCtrl + Dをおしてください"
+    memo_contents = readlines
+    text << memo_contents
   end
   elsif memo_type == 2
     puts "編集するファイル名を入力してください"
@@ -19,8 +19,9 @@ while true
     p CSV.read("#{file_title}")
     CSV.open("#{file_title}", "a+") do |text|
     puts "編集内容を追加してください"
-    memo_contents = gets.chomp
-    text << ["#{memo_contents}"]
+    puts "入力が完了したらCtrl + Dをおしてください"
+    memo_contents = readlines
+    text << memo_contents
   end
   else memo_type < 1 || memo_type > 2
     puts "もう一度入力してください"
